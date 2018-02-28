@@ -11,20 +11,20 @@ import java.util.HashSet;
 
     BREVE LEIA-ME:
 
-    Seguem as descriÃ§Ãµes de cada classe:
+    Seguem as descrições de cada classe:
 
-    DefaultCOMRequests -> Respostas padrÃµes para mensagens da porta COM, coisas que o
-    PC pode responder (tempo por exemplo). A variÃ¡vel "FORWARD_INTERCEPTED_MESSAGES" define se
-    as mensagens serÃ£o realmente enviadas por UDP.
+    DefaultCOMRequests -> Respostas padrões para mensagens da porta COM, coisas que o
+    PC pode responder (tempo por exemplo). A variável "FORWARD_INTERCEPTED_MESSAGES" define se
+    as mensagens serão realmente enviadas por UDP.
 
-    TransmitEncod -> PadrÃµes de codificaÃ§Ã£o utilizÃ¡veis. Existem atualmente UTF8 e ASCII.
-    Suas referÃªncias estÃ£o nas funÃ§Ãµes.
+    TransmitEncod -> Padrões de codificação utilizáveis. Existem atualmente UTF8 e ASCII.
+    Suas referências estão nas funções.
 
-    SkillForm1 -> FormulÃ¡rio visÃ­vel durante a execuÃ§Ã£o.
+    SkillForm1 -> Formulário visível durante a execução.
 
-    SerialThread -> Thread principal da leitura Serial (dados da porta COM). Apenas configuraÃ§Ãµes bÃ¡sicas.
+    SerialThread -> Thread principal da leitura Serial (dados da porta COM). Apenas configurações básicas.
 
-    SerialClass -> ContÃ©m duas threads com as funÃ§Ãµes de receber dados UDP por rede e Serial da porta COM.
+    SerialClass -> Contém duas threads com as funções de receber dados UDP por rede e Serial da porta COM.
 
  */
 
@@ -48,12 +48,12 @@ public class Main {
             if(data.indexOf("[SERVER_CLOSE]")!=-1) {serialThr.interrupt();brdServ.interrupt();}
             Main.serialThr.serial.serialPort.getOutputStream().write(data.getBytes(Main.CONECTION_ENCODING.getCODING()));
         } catch (Exception e) {
-            System.out.println("Nao Ã© possÃ­vel escrever na porta.\nMsg:"+e.toString());
+            System.out.println("Nao é possível escrever na porta.\nMsg:"+e.toString());
         }
     }
 
     public static void writeUDPData(String data) {
-            //Usar respostas padrÃ£o:
+            //Usar respostas padrão:
         String defReturn= DefaultCOMRequests.getReply(data);
             if(defReturn!=null){
                 writeCOMData(defReturn);
@@ -65,7 +65,7 @@ public class Main {
         try {
             brdSend.enviaBroadcast(data);
         } catch (Exception e) {
-            System.out.println("Nao Ã© possÃ­vel enviar.\nMsg:"+e.toString());
+            System.out.println("Nao é possível enviar.\nMsg:"+e.toString());
         }
     }
 
